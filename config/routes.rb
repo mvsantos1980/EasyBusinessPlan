@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :business_processes
-  # devise_for :users
+  resources :business_processes do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'business_process'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
+  devise_for :users
 
   resources :resources
   resources :marketings
