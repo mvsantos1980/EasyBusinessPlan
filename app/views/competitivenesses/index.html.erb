@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Competitivenesses</h1>
+<h1>Sobre a competitividade e o ambiente de negócios</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Questão</th>
+    <th>Resposta</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @competitivenesses.each do |competitiveness| %>
-      <tr>
-        <td><%= link_to 'Show', competitiveness %></td>
-        <td><%= link_to 'Edit', edit_competitiveness_path(competitiveness) %></td>
-        <td><%= link_to 'Destroy', competitiveness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @competitivenesses.each do |competitiveness| %>
+    <tr>
+      <td><%= competitiveness.descripition %></td>
+      <td>
+        <% @answer.each do |resposta| %>
+          <%= resposta.question_id == competitiveness.id ? resposta.answer : "" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Competitiveness', new_competitiveness_path %>
+<%= link_to 'Ver\Editar respostas', answers_path %>

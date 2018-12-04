@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #Modulos do sistema
   resources :business_processes do
     collection do
       get 'new'
@@ -10,8 +11,6 @@ Rails.application.routes.draw do
       delete 'destroy'
     end
   end
-
-  devise_for :users
 
   resources :resources do
     collection do
@@ -39,7 +38,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :competitivenesses
+  resources :competitivenesses do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'competitiveness'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
 
   resources :businesses do
     collection do
@@ -52,9 +60,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # base operacional do sistema
   resources :answers
   resources :groups
   resources :questions
+
+  #DEVISE
+  devise_for :users
 
   # devise_for :users, controllers: {
   #     sessions: 'users/sessions',
