@@ -25,13 +25,39 @@
       <div class="col-sm-12">
         <h4>Não perca tempo!</h4>
         <hr>
-        <%#= render 'form' %>
+        <% if !user_signed_in? %>
+          <div id="cad-button">
+            <%= link_to 'Novo usuário', '#', :id => 'btn-click', :class => 'btn btn-block btn-success' %>
+            <%= link_to 'Já sou cadastrado', new_user_session_path, :class => 'btn btn-block btn-info' %>
+          </div>
+          <div style="display: none" id="cad-form">
+            <%= render 'form' %>
+            <div class="col-sm-12">
+              <p>*Nos comprometemos em não divulgar os dados informados.</p>
+            </div>
+          </div>
+
+        <% else %>
+          <p>Você está logado com o perfil: <strong><%= current_user.email %></strong></p>
+          <p>O que deseja fazer?</p>
+          <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-block btn-info' %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-block btn-warning'%>
+          <%= link_to 'Iniciar o plano de negócio', new_contextualization_path, class: 'btn btn-block btn-success'%>
+          <div class="col-sm-12">
+            <p>*Nos comprometemos em não divulgar os dados informados.</p>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <p>*Nos comprometemos em não divulgar os dados informados.</p>
-      </div>
+
     </div>
   </div>
 </div>
+<script>
+    $('#btn-click').click(function (event) {
+        $('#cad-form').css({display: "block"});
+        $('#cad-button').css({display: "none"});
+        event.preventDefault(); // Prevent link from following its href
+    });
+</script>

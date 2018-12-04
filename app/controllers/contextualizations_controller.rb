@@ -4,7 +4,8 @@ class ContextualizationsController < ApplicationController
   # GET /contextualizations
   # GET /contextualizations.json
   def index
-    @contextualizations = Contextualization.all
+    @contextualizations = Question.where('group_id = 1')
+    @answer = Answer.where('user_id = ?', current_user.id)
   end
 
   # GET /contextualizations/1
@@ -14,26 +15,30 @@ class ContextualizationsController < ApplicationController
 
   # GET /contextualizations/new
   def new
-    @contextualization = Contextualization.new
+    @answer = Answer.new
+    @questions = Question.where('group_id = 1')
+    @method = 'create'
   end
 
   # GET /contextualizations/1/edit
   def edit
+    @contextualization = Answer.joins(Question).where('questions.group_id = 1 and user_id = ?', current_user.id)
+    @method = 'update'
   end
 
   # POST /contextualizations
   # POST /contextualizations.json
   def create
-    @contextualization = Contextualization.new(contextualization_params)
-
+    params[:contextualization][:question].each do |k, v|
+      answer = Answer.new
+      answer.user_id = params[:contextualization][:user_id]
+      answer.question_id = k;
+      answer.answer = v;
+      answer.save
+    end
     respond_to do |format|
-      if @contextualization.save
-        format.html { redirect_to @contextualization, notice: 'Contextualization was successfully created.' }
-        format.json { render :show, status: :created, location: @contextualization }
-      else
-        format.html { render :new }
-        format.json { render json: @contextualization.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to contextualizations_path, notice: 'Questionário criado com sucesso.' }
+      format.json { render :index, status: :created, location: @answer }
     end
   end
 
@@ -63,12 +68,12 @@ class ContextualizationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_contextualization
-      @contextualization = Contextualization.find(params[:id])
-    end
+  def set_contextualization
+    @contextualization = Contextualization.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def contextualization_params
-      params.fetch(:contextualization, {})
-    end
+  def contextualization_params
+    params.fetch(:contextualization, {})
+  end
 end

@@ -4,17 +4,18 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    @answers = Answer.where('user_id = ?', current_user.id)
   end
 
   # GET /answers/1
   # GET /answers/1.json
   def show
+    redirect_to answers_path
   end
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    redirect_to answers_path
   end
 
   # GET /answers/1/edit

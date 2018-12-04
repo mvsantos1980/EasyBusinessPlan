@@ -1,20 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Contextualizations</h1>
+<h1>Contextualização</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Questão</th>
+      <th>Resposta</th>
     </tr>
   </thead>
 
   <tbody>
     <% @contextualizations.each do |contextualization| %>
       <tr>
-        <td><%= link_to 'Show', contextualization %></td>
-        <td><%= link_to 'Edit', edit_contextualization_path(contextualization) %></td>
-        <td><%= link_to 'Destroy', contextualization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= contextualization.descripition %></td>
+        <td>
+          <% @answer.each do |resposta| %>
+            <%= resposta.question_id == contextualization.id ? resposta.answer : "" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Contextualization', new_contextualization_path %>
+<%= link_to 'Ver\Editar respostas', answers_path %>

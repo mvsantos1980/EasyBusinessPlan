@@ -1,17 +1,19 @@
-<%= form_with(model: contextualization, local: true) do |form| %>
-  <% if contextualization.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contextualization.errors.count, "error") %> prohibited this contextualization from being saved:</h2>
-
-      <ul>
-      <% contextualization.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for :contextualization, url: @method do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id  %>
+  <% if @questions.blank? %>
+    <% @contextualization.each do |c| %>
+      <div class="form-group">
+        <%= form.label c.question.descripition %>
+        <%= form.text_area "answer[#{c.id}]", value: c.answer, id: :answer, class: 'form-control' %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @questions.each do |q| %>
+      <div class="form-group">
+        <%= form.label q.descripition %>
+        <%= form.text_area "question[#{q.id}]", id: :answer, class: 'form-control' %>
+      </div>
+    <% end %>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Salvar questionário", class: 'btn btn-block btn-success' %>
 <% end %>

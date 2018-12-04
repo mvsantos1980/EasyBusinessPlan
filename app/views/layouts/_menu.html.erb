@@ -5,19 +5,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav ml-auto">
-      <%# if user_signed_in? %>
-<!--      <li class="nav-item">-->
-<!--        <li class="nav-item dropdown">-->
-<!--          <div class="dropdown-menu">-->
-            <%#= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
-            <%#= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'  %>
-<!--          </div>-->
-<!--        </li>-->
-<!--      </li>-->
-      <%# else %>
-        <%#= nav_link 'Sign up', new_user_registration_path %>
-        <%#= nav_link 'Login', new_user_session_path %>
-      <%# end %>
+      <% if user_signed_in? %>
+        <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-secondary' %> |
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-secondary'  %>
+      <% else %>
+        <%= nav_link 'Cadastrar', new_user_registration_path %>
+        <%= nav_link 'Entrar', new_user_session_path %>
+      <% end %>
     </ul>
   </div>
 </nav>
