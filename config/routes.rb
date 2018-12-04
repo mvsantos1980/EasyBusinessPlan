@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :business_processes do
     collection do
       get 'new'
@@ -9,9 +10,20 @@ Rails.application.routes.draw do
       delete 'destroy'
     end
   end
+
   devise_for :users
 
-  resources :resources
+  resources :resources do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'resources'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
+
   resources :marketings
   resources :homepages
   resources :finances
