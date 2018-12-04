@@ -16,14 +16,13 @@ class ContextualizationsController < ApplicationController
   # GET /contextualizations/new
   def new
     @answer = Answer.new
-    @questions = Question.where('group_id = 1')
+    @questions = Question.where('group_id = 2')
     @method = 'create'
   end
 
   # GET /contextualizations/1/edit
   def edit
-    @contextualization = Answer.joins(Question).where('questions.group_id = 1 and user_id = ?', current_user.id)
-    @method = 'update'
+    redirect_to answers_path
   end
 
   # POST /contextualizations
@@ -45,6 +44,7 @@ class ContextualizationsController < ApplicationController
   # PATCH/PUT /contextualizations/1
   # PATCH/PUT /contextualizations/1.json
   def update
+    redirect_to answers_path
     respond_to do |format|
       if @contextualization.update(contextualization_params)
         format.html { redirect_to @contextualization, notice: 'Contextualization was successfully updated.' }
@@ -74,6 +74,7 @@ class ContextualizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def contextualization_params
+    redirect_to answers_path
     params.fetch(:contextualization, {})
   end
 end

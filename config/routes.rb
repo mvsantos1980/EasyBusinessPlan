@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :business_processes
+  # devise_for :users
+
   resources :resources
   resources :marketings
   resources :homepages
@@ -17,7 +19,18 @@ Rails.application.routes.draw do
   end
 
   resources :competitivenesses
-  resources :businesses
+
+  resources :businesses do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'bussiness'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
+
   resources :answers
   resources :groups
   resources :questions
