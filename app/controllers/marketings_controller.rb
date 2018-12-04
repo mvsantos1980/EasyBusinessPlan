@@ -4,42 +4,48 @@ class MarketingsController < ApplicationController
   # GET /marketings
   # GET /marketings.json
   def index
-    @marketings = Marketing.all
+    @marketings = Question.where('group_id = 6')
+    @answer = Answer.where('user_id = ?', current_user.id)
   end
 
   # GET /marketings/1
   # GET /marketings/1.json
   def show
+    redirect_to answers_path
   end
 
   # GET /marketings/new
   def new
-    @marketing = Marketing.new
+    @answer = Answer.new
+    @questions = Question.where('group_id = 6')
+    @method = 'create'
   end
 
   # GET /marketings/1/edit
   def edit
+    redirect_to answers_path
   end
 
   # POST /marketings
   # POST /marketings.json
   def create
-    @marketing = Marketing.new(marketing_params)
-
+    params[:marketing][:question].each do |k, v|
+      answer = Answer.new
+      answer.user_id = params[:marketing][:user_id]
+      answer.question_id = k;
+      answer.answer = v;
+      answer.save
+    end
     respond_to do |format|
-      if @marketing.save
-        format.html { redirect_to @marketing, notice: 'Marketing was successfully created.' }
-        format.json { render :show, status: :created, location: @marketing }
-      else
-        format.html { render :new }
-        format.json { render json: @marketing.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to answers_path, notice: 'Questionário criado com sucesso.' }
+      format.json { render :index, status: :created, location: @answer }
     end
   end
 
   # PATCH/PUT /marketings/1
   # PATCH/PUT /marketings/1.json
   def update
+    redirect_to answers_path
     respond_to do |format|
       if @marketing.update(marketing_params)
         format.html { redirect_to @marketing, notice: 'Marketing was successfully updated.' }
@@ -54,6 +60,7 @@ class MarketingsController < ApplicationController
   # DELETE /marketings/1
   # DELETE /marketings/1.json
   def destroy
+    redirect_to answers_path
     @marketing.destroy
     respond_to do |format|
       format.html { redirect_to marketings_url, notice: 'Marketing was successfully destroyed.' }
@@ -62,13 +69,15 @@ class MarketingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_marketing
-      @marketing = Marketing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_marketing
+    redirect_to answers_path
+    # @marketing = Marketing.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def marketing_params
-      params.fetch(:marketing, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def marketing_params
+    redirect_to answers_path
+    params.fetch(:marketing, {})
+  end
 end

@@ -1,25 +1,29 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Marketings</h1>
 
-<table>
+<h1>Marketing</h1>
+
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Questão</th>
+    <th>Resposta</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @marketings.each do |marketing| %>
-      <tr>
-        <td><%= link_to 'Show', marketing %></td>
-        <td><%= link_to 'Edit', edit_marketing_path(marketing) %></td>
-        <td><%= link_to 'Destroy', marketing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @marketings.each do |marketing| %>
+    <tr>
+      <td><%= marketing.descripition %></td>
+      <td>
+        <% @answer.each do |resposta| %>
+          <%= resposta.question_id == marketing.id ? resposta.answer : "" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Marketing', new_marketing_path %>
+<%= link_to 'Ver\Editar respostas', answers_path %>

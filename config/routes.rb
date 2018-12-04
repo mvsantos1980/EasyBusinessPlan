@@ -23,8 +23,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :marketings
-  resources :homepages
+  resources :marketings do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'marketing'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
+
   resources :finances
 
   resources :contextualizations do
@@ -64,6 +73,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :groups
   resources :questions
+  resources :homepages
 
   #DEVISE
   devise_for :users
@@ -75,7 +85,7 @@ Rails.application.routes.draw do
   # }
 
 
-
+  #ROTAS
   root 'homepages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
