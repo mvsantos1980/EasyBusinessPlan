@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :human_resources
+  resources :sales
+  resources :pricings
+
   #Modulos do sistema
   resources :business_processes do
     collection do
@@ -34,7 +38,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :finances
+  resources :finances do
+    collection do
+      get 'new'
+      get 'edit'
+      get 'finance'
+      post 'create'
+      post 'update'
+      delete 'destroy'
+    end
+  end
 
   resources :contextualizations do
     collection do
@@ -76,7 +89,7 @@ Rails.application.routes.draw do
   resources :homepages
 
   #DEVISE
-  devise_for :users
+  #devise_for :users
 
   # devise_for :users, controllers: {
   #     sessions: 'users/sessions',

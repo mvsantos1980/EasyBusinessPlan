@@ -1,3 +1,8 @@
+Group.destroy_all
+
+Question.destroy_all
+
+
 Group.create(
     descripition: 'Contextualização',
     )
@@ -150,10 +155,94 @@ Question.create(
     group_id: 7
 )
 Question.create(
-    descripition: 'Que lucro espera obter do negócio?',
+    descripition: 'Que lucro espera obter do negócio? (Em porcentagem. Ex.: para 30% colocar 30)',
     group_id: 7
 )
 Question.create(
-    descripition: 'Em quanto tempo espera que o capital investido retorne?',
+    descripition: 'Em quanto tempo espera que o capital investido retorne? (meses)',
     group_id: 7
+)
+
+Group.create(
+    descripition: 'Precificação'
+)
+Question.create(
+    descripition: 'Qual o prazo onde você pretende obter o maior lucro?',
+    group_id: 8
+)
+Question.create(
+    descripition: 'A formação de preço será feita com base:',
+    group_id: 8
+)
+
+Group.create(
+    descripition: 'Vendas'
+)
+Question.create(
+    descripition: 'Quais os fatores estratégicos que possuem diferenciais que contribuirão para gerar vendas no seu negócio?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Como funcionará o processo de pré-venda?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Como funcionará o processo de venda?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Como funcionará o processo de pós-venda?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Quais os diferenciais da equipe de vendas?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Quais características do processo de vendas podem ser considerados pontos fracos?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Qual é a estratégia  da empresa para se manter competitiva em situações onde a curva de oferta e demanda seja desfavorável?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Quais pontos forte e fracos da sua força de vendas?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Quais as oportunidade e ameaças para sua força de vendas?',
+    group_id: 9
+)
+Question.create(
+    descripition: 'Faça uma análise da sua força de vendas confrontando suas forças com as oportunidades e suas fraquezas com as ameaças. Descreva sua análise.',
+    group_id: 9
+)
+
+Group.create(
+     descripition: 'Recursos Humanos'
+)
+Question.create(
+    descripition: 'Quem são as pessoas chaves que irão atuar no negócio?',
+    group_id: 10
+)
+Question.create(
+    descripition: 'Quais são os principais cargos para o seu negócio fluir?',
+    group_id: 10
+)
+Question.create(
+    descripition: 'Quais os conhecimentos e as habilidades necessárias para as pessoas que desempenharão os cargos definidos?',
+    group_id: 10
+)
+Question.create(
+    descripition: 'O que cada pessoa executará efetivamente na empresa?',
+    group_id: 10
+)
+Question.create(
+    descripition: 'Para essas funções existe algum tipo de treinamento, capacitação ou algum tipo incentivo?',
+    group_id: 10
+)
+Question.create(
+    descripition: 'Existe alguma estratégia para manter a competitividade das pessoas com foco na competitividade do negócio?',
+    group_id: 10
 )

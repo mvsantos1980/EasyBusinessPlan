@@ -11,6 +11,7 @@ class ContextualizationsController < ApplicationController
   # GET /contextualizations/1
   # GET /contextualizations/1.json
   def show
+    redirect_to answers_path
   end
 
   # GET /contextualizations/new
@@ -36,7 +37,7 @@ class ContextualizationsController < ApplicationController
       answer.save
     end
     respond_to do |format|
-      format.html { redirect_to contextualizations_path, notice: 'Questionário criado com sucesso.' }
+      format.html { redirect_to answers_path, notice: 'Questionário criado com sucesso.' }
       format.json { render :index, status: :created, location: @answer }
     end
   end
