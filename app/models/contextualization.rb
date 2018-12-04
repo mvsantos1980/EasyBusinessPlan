@@ -1,0 +1,2 @@
+class Contextualization < ApplicationRecord
+end

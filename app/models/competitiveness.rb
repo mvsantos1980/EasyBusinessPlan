@@ -1,0 +1,2 @@
+class Competitiveness < ApplicationRecord
+end

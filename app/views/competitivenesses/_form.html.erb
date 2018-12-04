@@ -1,0 +1,17 @@
+<%= form_with(model: competitiveness, local: true) do |form| %>
+  <% if competitiveness.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(competitiveness.errors.count, "error") %> prohibited this competitiveness from being saved:</h2>
+
+      <ul>
+      <% competitiveness.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
