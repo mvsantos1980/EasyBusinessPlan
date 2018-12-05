@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :options
   #Modulos do sistema
 
   resources :human_resources do
