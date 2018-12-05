@@ -4,7 +4,7 @@ class OptionsController < ApplicationController
   # GET /options
   # GET /options.json
   def index
-    @options = Option.all
+    @options = Option.all.order(:question_id)
   end
 
   # GET /options/1
@@ -56,19 +56,19 @@ class OptionsController < ApplicationController
   def destroy
     @option.destroy
     respond_to do |format|
-      format.html { redirect_to options_url, notice: 'Option was successfully destroyed.' }
+      format.html { redirect_to options_url, notice: 'Opção excluída!' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_option
-      @option = Option.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_option
+    @option = Option.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def option_params
-      params.require(:option).permit(:description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def option_params
+    params.require(:option).permit(:description, :question_id)
+  end
 end

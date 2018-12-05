@@ -2,6 +2,7 @@ Group.destroy_all
 
 Question.destroy_all
 
+Option.destroy_all
 
 Group.create(
     descripition: 'Contextualização',
@@ -170,9 +171,29 @@ Question.create(
     descripition: 'Qual o prazo onde você pretende obter o maior lucro?',
     group_id: 8
 )
+Option.create(
+      description: 'Curto prazo',
+      question_id: 34
+)
+Option.create(
+    description: 'Médio prazo',
+    question_id: 34
+)
+Option.create(
+    description: 'Longo prazo',
+    question_id: 34
+)
 Question.create(
     descripition: 'A formação de preço será feita com base:',
     group_id: 8
+)
+Option.create(
+    description: 'Com base no mercado',
+    question_id: 35
+)
+Option.create(
+    description: 'Combinação de custo e mercado',
+    question_id: 35
 )
 
 Group.create(
@@ -182,21 +203,89 @@ Question.create(
     descripition: 'Quais os fatores estratégicos que possuem diferenciais que contribuirão para gerar vendas no seu negócio?',
     group_id: 9
 )
+Option.create(
+    description: 'Marketing de curto prazo',
+    question_id: 36
+)
+Option.create(
+    description: 'Marketing de longo prazo',
+    question_id: 36
+)
+Option.create(
+    description: 'Preços',
+    question_id: 36
+)
+Option.create(
+    description: 'Custos',
+    question_id: 36
+)
 Question.create(
     descripition: 'Como funcionará o processo de pré-venda?',
     group_id: 9
+)
+Option.create(
+    description: 'Marketing digital',
+    question_id: 37
+)
+Option.create(
+    description: 'Inbound marketing',
+    question_id: 37
+)
+Option.create(
+    description: 'Visitas presenciais',
+    question_id: 37
+)
+Option.create(
+    description: 'Contato telefônico',
+    question_id: 37
+)
+Option.create(
+    description: 'Parcerias',
+    question_id: 37
 )
 Question.create(
     descripition: 'Como funcionará o processo de venda?',
     group_id: 9
 )
+Option.create(
+    description: 'Internet',
+    question_id: 38
+)
+Option.create(
+    description: 'Loja física',
+    question_id: 38
+)
+Option.create(
+    description: 'Vendedor Externo',
+    question_id: 38
+)
 Question.create(
     descripition: 'Como funcionará o processo de pós-venda?',
     group_id: 9
 )
+Option.create(
+    description: 'Contato pessoal',
+    question_id: 39
+)
+Option.create(
+    description: 'Telefone',
+    question_id: 39
+)
+Option.create(
+    description: 'E-mail',
+    question_id: 39
+)
 Question.create(
     descripition: 'Quais os diferenciais da equipe de vendas?',
     group_id: 9
+)
+Option.create(
+    description: 'Formação',
+    question_id: 40
+)
+Option.create(
+    description: 'Capacidade de persuasão',
+    question_id: 40
 )
 Question.create(
     descripition: 'Quais características do processo de vendas podem ser considerados pontos fracos?',

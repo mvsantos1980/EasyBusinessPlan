@@ -10,13 +10,16 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.label 'Questão' %>
+    <%= form.select :question_id, Question.all.collect { |question| [question.descripition, question.id] },{prompt: '(Selecione a questão)'}, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label 'Opção' %>
+    <%= form.text_field :description, class: 'form-control' %>
   </div>
+
+  <%= form.submit %>
+
 <% end %>

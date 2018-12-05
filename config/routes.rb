@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
 
-
-  resources :options
   #Modulos do sistema
+  resources :options
 
   resources :human_resources do
     collection do
