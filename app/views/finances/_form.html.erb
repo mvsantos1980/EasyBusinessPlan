@@ -11,7 +11,13 @@
     <% @questions.each do |q| %>
       <div class="form-group">
         <%= form.label q.descripition %>
-        <%= form.text_field "question[#{q.id}]", id: :answer, class: 'form-control numeric', placeholder: 'Somente números, sem pontos ou vírgulas' %>
+        <% @options = Option.where('question_id = ?', q.id) %>
+        <% if (@options.blank?) %>
+          <%= form.text_field "question[#{q.id}]", id: :answer, class: 'form-control numeric', placeholder: 'Somente números, sem pontos ou vírgulas' %>
+        <% else %>
+          <%= form.select "question[#{q.id}]", @options.collect { |option| [option.description, option.description] },{prompt: '(Selecione a opção)'}, class: 'form-control' %>
+        <% end %>
+
       </div>
     <% end %>
   <% end %>

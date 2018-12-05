@@ -17,7 +17,7 @@ class ContextualizationsController < ApplicationController
   # GET /contextualizations/new
   def new
     @answer = Answer.new
-    @questions = Question.where('group_id = 2')
+    @questions = Question.where('group_id = 1')
     @method = 'create'
   end
 
@@ -60,6 +60,7 @@ class ContextualizationsController < ApplicationController
   # DELETE /contextualizations/1
   # DELETE /contextualizations/1.json
   def destroy
+    redirect_to answers_path
     @contextualization.destroy
     respond_to do |format|
       format.html { redirect_to contextualizations_url, notice: 'Contextualization was successfully destroyed.' }
@@ -70,7 +71,8 @@ class ContextualizationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_contextualization
-    @contextualization = Contextualization.find(params[:id])
+    redirect_to answers_path
+    # @contextualization = Contextualization.find(params[:id])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.

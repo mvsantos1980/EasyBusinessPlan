@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.where('user_id = ?', current_user.id)
+    @answers = Answer.where('user_id = ?', current_user.id).order(:id)
   end
 
   # GET /answers/1
