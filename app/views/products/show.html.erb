@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @product.cost %>
+</p>
+
+<p>
+  <strong>Freightcost:</strong>
+  <%= @product.freightCost %>
+</p>
+
+<p>
+  <strong>Freightsale:</strong>
+  <%= @product.freightSale %>
+</p>
+
+<p>
+  <strong>Commission:</strong>
+  <%= @product.commission %>
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <%= @product.tax %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>Profit:</strong>
+  <%= @product.profit %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

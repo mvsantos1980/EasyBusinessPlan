@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fixed Costs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Water</th>
+      <th>Light</th>
+      <th>Telephone</th>
+      <th>Counter</th>
+      <th>Vehicle</th>
+      <th>Officesupplies</th>
+      <th>Rental</th>
+      <th>Maintenance</th>
+      <th>Taxes</th>
+      <th>Other</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fixed_costs.each do |fixed_cost| %>
+      <tr>
+        <td><%= fixed_cost.water %></td>
+        <td><%= fixed_cost.light %></td>
+        <td><%= fixed_cost.telephone %></td>
+        <td><%= fixed_cost.counter %></td>
+        <td><%= fixed_cost.vehicle %></td>
+        <td><%= fixed_cost.officeSupplies %></td>
+        <td><%= fixed_cost.rental %></td>
+        <td><%= fixed_cost.maintenance %></td>
+        <td><%= fixed_cost.taxes %></td>
+        <td><%= fixed_cost.other %></td>
+        <td><%= link_to 'Show', fixed_cost %></td>
+        <td><%= link_to 'Edit', edit_fixed_cost_path(fixed_cost) %></td>
+        <td><%= link_to 'Destroy', fixed_cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fixed Cost', new_fixed_cost_path %>

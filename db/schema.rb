@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_003201) do
+ActiveRecord::Schema.define(version: 2018_12_05_162157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 2018_12_05_003201) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fixed_costs", force: :cascade do |t|
+    t.decimal "water"
+    t.decimal "light"
+    t.decimal "telephone"
+    t.decimal "counter"
+    t.decimal "vehicle"
+    t.decimal "officeSupplies"
+    t.decimal "rental"
+    t.decimal "maintenance"
+    t.decimal "taxes"
+    t.decimal "other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "descripition"
     t.datetime "created_at", null: false
@@ -79,6 +95,20 @@ ActiveRecord::Schema.define(version: 2018_12_05_003201) do
   create_table "pricings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "description"
+    t.decimal "cost"
+    t.integer "freightCost"
+    t.integer "freightSale"
+    t.integer "commission"
+    t.integer "tax"
+    t.integer "quantity"
+    t.integer "profit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "questions", force: :cascade do |t|

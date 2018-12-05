@@ -1,0 +1,67 @@
+<%= form_with(model: fixed_cost, local: true) do |form| %>
+  <% if fixed_cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fixed_cost.errors.count, "error") %> prohibited this fixed_cost from being saved:</h2>
+
+      <ul>
+      <% fixed_cost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :water %>
+    <%= form.text_field :water %>
+  </div>
+
+  <div class="field">
+    <%= form.label :light %>
+    <%= form.text_field :light %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :counter %>
+    <%= form.text_field :counter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle %>
+    <%= form.text_field :vehicle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :officeSupplies %>
+    <%= form.text_field :officeSupplies %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rental %>
+    <%= form.text_field :rental %>
+  </div>
+
+  <div class="field">
+    <%= form.label :maintenance %>
+    <%= form.text_field :maintenance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :taxes %>
+    <%= form.text_field :taxes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other %>
+    <%= form.text_field :other %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

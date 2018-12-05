@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  water: 9.99
+  light: 9.99
+  telephone: 9.99
+  counter: 9.99
+  vehicle: 9.99
+  officeSupplies: 9.99
+  rental: 9.99
+  maintenance: 9.99
+  taxes: 9.99
+  other: 9.99
+
+two:
+  water: 9.99
+  light: 9.99
+  telephone: 9.99
+  counter: 9.99
+  vehicle: 9.99
+  officeSupplies: 9.99
+  rental: 9.99
+  maintenance: 9.99
+  taxes: 9.99
+  other: 9.99

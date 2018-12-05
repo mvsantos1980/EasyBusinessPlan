@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  cost: 9.99
+  freightCost: 1
+  freightSale: 1
+  commission: 1
+  tax: 1
+  quantity: 1
+  profit: 1
+
+two:
+  description: MyString
+  cost: 9.99
+  freightCost: 1
+  freightSale: 1
+  commission: 1
+  tax: 1
+  quantity: 1
+  profit: 1
