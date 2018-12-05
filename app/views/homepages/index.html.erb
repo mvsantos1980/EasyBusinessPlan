@@ -6,7 +6,7 @@
   <div class="col-sm-5">
     <div class="row">
       <div class="col-sm-12">
-        <%= image_tag "bebe.jpg" %>
+        <%= image_tag "OGMT9J0.jpg", :class => 'img-rounded' %>
       </div>
     </div>
     <div class="row">
@@ -28,13 +28,18 @@
         <% if !user_signed_in? %>
           <div id="cad-button">
             <%= link_to 'Novo usuário', '#', :id => 'btn-click', :class => 'btn btn-block btn-success' %>
-            <%= link_to 'Já sou cadastrado', new_user_session_path, :class => 'btn btn-block btn-info' %>
+            <%= link_to 'Já sou cadastrado', '#', :id => 'btn-click-login', :class => 'btn btn-block btn-info' %>
           </div>
           <div style="display: none" id="cad-form">
-            <%= render 'form' %>
+            <%= render 'form' %><p></p>
+            <%= link_to 'Cancelar', '#', :id => 'btn-click-cancel', :class => 'btn btn-block btn-warning' %>
             <div class="col-sm-12">
               <p>*Nos comprometemos em não divulgar os dados informados.</p>
             </div>
+          </div>
+          <div style="display: none" id="login-form">
+            <%= render 'formlogin' %><p></p>
+            <%= link_to 'Cancelar', '#', :id => 'btn-click-cancel', :class => 'btn btn-block btn-warning' %>
           </div>
 
         <% else %>
@@ -58,6 +63,17 @@
     $('#btn-click').click(function (event) {
         $('#cad-form').css({display: "block"});
         $('#cad-button').css({display: "none"});
+        event.preventDefault(); // Prevent link from following its href
+    });
+    $('#btn-click-login').click(function (event) {
+        $('#login-form').css({display: "block"});
+        $('#cad-button').css({display: "none"});
+        event.preventDefault(); // Prevent link from following its href
+    });
+    $('#btn-click-cancel').click(function (event) {
+        $('#cad-form').css({display: "none"});
+        $('#login-form').css({display: "none"});
+        $('#cad-button').css({display: "block"});
         event.preventDefault(); // Prevent link from following its href
     });
 </script>
