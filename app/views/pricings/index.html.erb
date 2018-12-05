@@ -1,25 +1,29 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Pricings</h1>
 
-<table>
+<h1>Precificação</h1>
+
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Questão</th>
+    <th>Resposta</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @pricings.each do |pricing| %>
-      <tr>
-        <td><%= link_to 'Show', pricing %></td>
-        <td><%= link_to 'Edit', edit_pricing_path(pricing) %></td>
-        <td><%= link_to 'Destroy', pricing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @pricings.each do |pricing| %>
+    <tr>
+      <td><%= pricing.descripition %></td>
+      <td>
+        <% @answer.each do |resposta| %>
+          <%= resposta.question_id == pricing.id ? resposta.answer : "" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Pricing', new_pricing_path %>
+<%= link_to 'Ver\Editar respostas', answers_path %>
