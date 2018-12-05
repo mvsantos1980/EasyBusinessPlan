@@ -3,10 +3,17 @@
   <h1><%= @answer.question.descripition %></h1>
   <hr>
   <div class="form-group">
-    <%= form.text_area :answer, :class => 'form-control' %>
+    <% @options = Option.where('question_id = ?', @answer.question.id) %>
+    <% if (@options.blank?) %>
+      <%= form.text_area :answer, :class => 'form-control' %>
+    <% else %>
+      <%= form.select "question[#{@answer.question.id}]", @options.collect { |option| [option.description, option.description] },{prompt: '(Selecione a opção)'}, class: 'form-control' %>
+    <% end %>
   </div>
 
   <div class="actions">
     <%= form.submit 'Salvar', :class => 'btn btn-block btn-success' %>
+    <%= link_to 'Cancelar', answers_path ,:class => 'btn btn-block btn-warning' %>
   </div>
 <% end %>
+
