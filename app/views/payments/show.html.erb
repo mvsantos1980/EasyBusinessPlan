@@ -1,19 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descrition:</strong>
-  <%= @payment.descrition %>
-</p>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <h2 class="text-center text-info">Forma de pagamento</h2>
+    <div class="card">
+      <div class="card-header">
+        <%= @payment.descrition %>
+      </div>
+      <div class="card-body">
+        <strong>Número de parcelas:</strong>
+        <%= @payment.installment %><br>
+        <strong>Primeiro pagamento à vista? </strong>
+        <%= @payment.firstPayNow ? 'Sim' : 'Não' %>
+      </div>
+      <div class="card-footer"></div>
+    </div><br>
+    <%= link_to 'Editar', edit_payment_path(@payment), :class => 'btn btn-info btn-block' %> <br>
+    <%= link_to 'Voltar', payments_path, :class => 'btn btn-warning btn-block' %>
+  </div>
+</div>
 
-<p>
-  <strong>Installment:</strong>
-  <%= @payment.installment %>
-</p>
 
-<p>
-  <strong>Firstpaynow:</strong>
-  <%= @payment.firstPayNow %>
-</p>
-
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>

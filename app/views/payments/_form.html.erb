@@ -11,22 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :descrition %>
-    <%= form.text_field :descrition %>
+  <div class="form-group">
+    <%= form.label 'Descrição' %>
+    <%= form.text_field :descrition, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :installment %>
-    <%= form.number_field :installment %>
+  <div class="form-group">
+    <%= form.label 'Número de parcelas' %>
+    <%= form.number_field :installment, :class => 'form-control numeric' %>
   </div>
 
-  <div class="field">
-    <%= form.label :firstPayNow %>
-    <%= form.check_box :firstPayNow %>
+  <div class="form-group">
+
+
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <%= form.check_box :firstPayNow%>
+      </div>
+    </div>
+    <%= form.label 'Primeira parcela é à vista?', :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar', :class => 'btn btn-block btn-success' %>
   </div>
 <% end %>
+
+<script>
+    $('.numeric').keyup(function() {
+        $(this).val(this.value.replace(/\D/g, ''));
+    });
+</script>

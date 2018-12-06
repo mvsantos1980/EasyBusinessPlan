@@ -1,5 +1,10 @@
-<h1>New Payment</h1>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h1>Nova forma de pagamento</h1>
+    <hr>
+    <%= render 'form', payment: @payment %><p></p>
+    <%= link_to 'Voltar', payments_path, :class => 'btn btn-block btn-warning' %>
+  </div>
+</div>
 
-<%= render 'form', payment: @payment %>
 
-<%= link_to 'Back', payments_path %>
