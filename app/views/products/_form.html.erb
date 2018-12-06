@@ -11,47 +11,68 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.label "Descrição" %>
+    <%= form.text_field :description, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.text_field :cost %>
+  <div class="form-group">
+    <%= form.label "Custo." %>
+    <p><small class="text-info">Se produto final, considerar o valor pago ao fornecedor. Se industrializado, considerar todos a matéria prima.</small></p>
+    <%= form.text_field :cost, :class => 'form-control dinheiro', :type => 'float' %>
   </div>
 
-  <div class="field">
-    <%= form.label :freightCost %>
-    <%= form.number_field :freightCost %>
+  <div class="form-group">
+    <%= form.label 'Frete sobre o custo:' %>
+    <p><small class="text-info">
+      Em porcentagem. Ex.: Para 5% digitar apenas 5. <br>
+      Se não há frete sob a compra de produtos ou insumos informar 0 (zero).
+    </small></p>
+    <%= form.number_field :freightCost, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :freightSale %>
-    <%= form.number_field :freightSale %>
+  <div class="form-group">
+    <%= form.label 'Frete sobre a venda:' %>
+    <p><small class="text-info">
+      Em porcentagem. Ex.: Para 5% digitar apenas 5.<br>
+      Se não há custo de entrega do produto informar o valor 0 (zero)
+    </small></p>
+    <%= form.number_field :freightSale, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :commission %>
-    <%= form.number_field :commission %>
+  <div class="form-group">
+    <%= form.label 'Comissão paga a quem fazer a venda:' %>
+    <p><small class="text-info">Em porcentagem. Ex.: Para 5% digitar apenas 5. </small></p>
+    <%= form.number_field :commission, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :tax %>
-    <%= form.number_field :tax %>
+  <div class="form-group">
+    <%= form.label 'Impostos e taxas' %>
+    <p><small class="text-info">Em porcentagem. Ex.: Para 5% digitar apenas 5. </small></p>
+    <%= form.number_field :tax, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+  <div class="form-group">
+    <%= form.label 'Quantidade estimada de vendas por mês deste produto:' %>
+    <%= form.number_field :quantity, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :profit %>
-    <%= form.number_field :profit %>
+  <div class="form-group">
+    <%= form.label "Margem de lucro esperada neste produto: " %>
+    <p><small class="text-info">Em porcentagem. Ex.: Para 5% digitar apenas 5. </small></p>
+    <%= form.number_field :profit, :class => 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label 'Principal forma de recebimento deste produto' %>
+    <%= form.select :payment_id, Payment.all.collect { |pay| [pay.descrition, pay.id] },{prompt: '(Selecione a forma de pagamento)'}, class: 'form-control' %>
+  </div>
+  <input type="hidden" value="<%= current_user.id %>" name="product[user_id]" id="product_user_id">
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar', :class => 'btn btn-success btn-block'%>
   </div>
 <% end %>
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+<script>
+    $('.dinheiro').mask('#.##0,00', {reverse: true});
+</script>

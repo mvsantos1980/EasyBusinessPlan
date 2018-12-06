@@ -1,45 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Fixed Costs</h1>
+<h1>Custos Fixos</h1>
 
-<table>
+<table class="table table-bordered table-hover">
   <thead>
-    <tr>
-      <th>Water</th>
-      <th>Light</th>
-      <th>Telephone</th>
-      <th>Counter</th>
-      <th>Vehicle</th>
-      <th>Officesupplies</th>
-      <th>Rental</th>
-      <th>Maintenance</th>
-      <th>Taxes</th>
-      <th>Other</th>
-      <th colspan="3"></th>
+    <tr class="text-light bg-dark">
+      <th>Água</th>
+      <th>Luz</th>
+      <th>Telefone</th>
+      <th>Contabilidade</th>
+      <th>Veículos</th>
+      <th>Material de expediente</th>
+      <th>Aluguel</th>
+      <th>Manutenção</th>
+      <th>Taxas</th>
+      <th>Outros</th>
+      <th colspan="2">Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @fixed_costs.each do |fixed_cost| %>
       <tr>
-        <td><%= fixed_cost.water %></td>
-        <td><%= fixed_cost.light %></td>
-        <td><%= fixed_cost.telephone %></td>
-        <td><%= fixed_cost.counter %></td>
-        <td><%= fixed_cost.vehicle %></td>
-        <td><%= fixed_cost.officeSupplies %></td>
-        <td><%= fixed_cost.rental %></td>
-        <td><%= fixed_cost.maintenance %></td>
-        <td><%= fixed_cost.taxes %></td>
-        <td><%= fixed_cost.other %></td>
-        <td><%= link_to 'Show', fixed_cost %></td>
-        <td><%= link_to 'Edit', edit_fixed_cost_path(fixed_cost) %></td>
-        <td><%= link_to 'Destroy', fixed_cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>R<%= number_to_currency fixed_cost.water %></td>
+        <td>R<%= number_to_currency fixed_cost.light %></td>
+        <td>R<%= number_to_currency fixed_cost.telephone %></td>
+        <td>R<%= number_to_currency fixed_cost.counter %></td>
+        <td>R<%= number_to_currency fixed_cost.vehicle %></td>
+        <td>R<%= number_to_currency fixed_cost.officeSupplies %></td>
+        <td>R<%= number_to_currency fixed_cost.rental %></td>
+        <td>R<%= number_to_currency fixed_cost.maintenance %></td>
+        <td>R<%= number_to_currency fixed_cost.taxes %></td>
+        <td>R<%= number_to_currency fixed_cost.other %></td>
+        <td><%= link_to 'Edit', edit_fixed_cost_path(fixed_cost), :class => 'btn btn-sm btn-warning' %></td>
+        <td><%= link_to 'Destroy', fixed_cost, method: :delete, :class => 'btn btn-sm btn-danger', data: { confirm: 'Está certo disso' } %></td>
+      </tr>
+      <tr>
+        <td colspan="6"></td>
+        <td colspan="2" class="text-light bg-dark"><strong>Total de custos fixos</strong></td>
+        <td colspan="4" class="text-light bg-secondary">R<%= number_to_currency soma_custos_fixos fixed_cost %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Fixed Cost', new_fixed_cost_path %>
+<%= link_to 'Cadastrar custos fixos', new_fixed_cost_path, :class => 'btn btn-success' %>

@@ -1,5 +1,8 @@
-<h1>New Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Back', products_path %>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h1>Novo produto</h1>
+    <hr>
+    <%= render 'form', product: @product %><p></p>
+    <%= link_to 'Voltar', products_path, :class => 'btn btn-block btn-warning' %>
+  </div>
+</div>

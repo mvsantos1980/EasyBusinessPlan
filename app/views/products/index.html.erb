@@ -1,36 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Seus produtos</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th>Description</th>
-      <th>Cost</th>
-      <th>Freightcost</th>
-      <th>Freightsale</th>
-      <th>Commission</th>
-      <th>Tax</th>
-      <th>Quantity</th>
-      <th>Profit</th>
-      <th colspan="3"></th>
+    <tr class="text-light bg-dark">
+      <th style="width: 15%">Descrição</th>
+      <th>Custo</th>
+      <th>Markup</th>
+      <th>Preço de Venda</th>
+      <th>Quantidade de Venda mensal</th>
+      <th>Total vendas mensal</th>
+      <th>Forma de pagamento</th>
+      <th colspan="3">Ação</th>
     </tr>
   </thead>
 
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.description %></td>
-        <td><%= product.cost %></td>
-        <td><%= product.freightCost %></td>
-        <td><%= product.freightSale %></td>
-        <td><%= product.commission %></td>
-        <td><%= product.tax %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.profit %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-info"><strong><%= product.description %></strong></td>
+        <td>R<%= number_to_currency product.cost %></td>
+
+        <td><%= format("%.2f", (markup product))  %></td>
+        <td>R$<%= format("%.2f", (preco_venda product)) %></td>
+
+        <td><%= product.quantity %> unidades</td>
+        <td><%= format("R$ %.2f", (total_venda product))%></td>
+        <td><%= product.payment.descrition %></td>
+        <td><%= link_to 'Ver', product, :class => 'btn btn-sm btn-info' %></td>
+        <td><%= link_to 'Editar', edit_product_path(product), :class => 'btn btn-sm btn-warning' %></td>
+        <td><%= link_to 'Excluir', product, method: :delete, :class => 'btn btn-sm btn-danger', data: { confirm: 'Você está certo disso?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'Novo Produto', new_product_path, :class => 'btn btn-success' %>

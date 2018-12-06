@@ -1,44 +1,68 @@
-<p id="notice"><%= notice %></p>
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div class="card">
+      <div class="card-header">
+        <strong><%= @product.description %></strong>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>Custo:</strong>
+          R<%= number_to_currency @product.cost %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+        <p>
+          <strong>Frete de custo:</strong>
+          <%= @product.freightCost %>%
+        </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @product.cost %>
-</p>
+        <p>
+          <strong>Frente de venda:</strong>
+          <%= @product.freightSale %>%
+        </p>
 
-<p>
-  <strong>Freightcost:</strong>
-  <%= @product.freightCost %>
-</p>
+        <p>
+          <strong>Comissão:</strong>
+          <%= @product.commission %>%
+        </p>
 
-<p>
-  <strong>Freightsale:</strong>
-  <%= @product.freightSale %>
-</p>
+        <p>
+          <strong>Impostos e taxas:</strong>
+          <%= @product.tax %>%
+        </p>
 
-<p>
-  <strong>Commission:</strong>
-  <%= @product.commission %>
-</p>
+        <p>
+          <strong>Venda mensal:</strong>
+          <%= @product.quantity %> Unidades
+        </p>
 
-<p>
-  <strong>Tax:</strong>
-  <%= @product.tax %>
-</p>
+        <p>
+          <strong>Margem de lucro:</strong>
+          <%= @product.profit %>%
+        </p>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Profit:</strong>
-  <%= @product.profit %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+        <p>
+          <strong>Forma de pagamento:</strong>
+          <%= @product.payment.descrition %>
+        </p>
+        <table class="table table-bordered">
+          <tr>
+            <th>Markup</th>
+            <td><%= format("%.2f", (markup @product))  %></td>
+          </tr>
+          <tr>
+            <th>Preço Venda</th>
+            <td><%= format("R$ %.2f", (preco_venda @product)) %></td>
+          </tr>
+          <tr>
+            <th>Volume de vendas no mês</th>
+            <td><%= format("R$ %.2f", (total_venda @product))%></td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Editar', edit_product_path(@product), :class => 'btn btn-block btn-info' %>
+        <%= link_to 'Voltar', products_path, :class => 'btn btn-block btn-warning' %>
+      </div>
+    </div>
+  </div>
+</div>

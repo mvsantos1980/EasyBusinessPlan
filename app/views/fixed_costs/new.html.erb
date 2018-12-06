@@ -1,5 +1,9 @@
-<h1>New Fixed Cost</h1>
+<div class="row justify-content-center">
+  <div class="col-6">
+    <h1>Cadastro de custos fixos</h1>
+    <hr>
+    <%= render 'form', fixed_cost: @fixed_cost %><p></p>
+    <%= link_to 'Voltar', fixed_costs_path, :class => 'btn btn-block btn-warning' %>
+  </div>
+</div>
 
-<%= render 'form', fixed_cost: @fixed_cost %>
-
-<%= link_to 'Back', fixed_costs_path %>

@@ -4,7 +4,7 @@ class FixedCostsController < ApplicationController
   # GET /fixed_costs
   # GET /fixed_costs.json
   def index
-    @fixed_costs = FixedCost.all
+    @fixed_costs = FixedCost.where('user_id = ?', current_user.id)
   end
 
   # GET /fixed_costs/1
@@ -14,7 +14,14 @@ class FixedCostsController < ApplicationController
 
   # GET /fixed_costs/new
   def new
-    @fixed_cost = FixedCost.new
+    @fixed_cost = FixedCost.where('user_id = ?', current_user.id).limit(1)
+    if (@fixed_cost.blank?)
+      @fixed_cost = FixedCost.new
+    else
+      @fixed_cost.each do |cost|
+        redirect_to edit_fixed_cost_path(cost)
+      end
+    end
   end
 
   # GET /fixed_costs/1/edit
@@ -69,6 +76,6 @@ class FixedCostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fixed_cost_params
-      params.require(:fixed_cost).permit(:water, :light, :telephone, :counter, :vehicle, :officeSupplies, :rental, :maintenance, :taxes, :other)
+      params.require(:fixed_cost).permit(:water, :light, :telephone, :counter, :vehicle, :officeSupplies, :rental, :maintenance, :taxes, :other, :user_id)
     end
 end

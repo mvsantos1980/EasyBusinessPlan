@@ -11,57 +11,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :water %>
-    <%= form.text_field :water %>
+  <div class="form-group">
+    <%= form.label 'Tarifa de água' %>
+    <%= form.text_field :water, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :light %>
-    <%= form.text_field :light %>
+  <div class="form-group">
+    <%= form.label 'Tarifa de luz' %>
+    <%= form.text_field :light, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :telephone %>
-    <%= form.text_field :telephone %>
+  <div class="form-group">
+    <%= form.label 'Gastos com telefonia e internet' %>
+    <%= form.text_field :telephone, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :counter %>
-    <%= form.text_field :counter %>
+  <div class="form-group">
+    <%= form.label 'Gastos com contabilidade' %>
+    <%= form.text_field :counter, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :vehicle %>
-    <%= form.text_field :vehicle %>
+  <div class="form-group">
+    <%= form.label 'Gastos com veículos' %>
+    <%= form.text_field :vehicle, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :officeSupplies %>
-    <%= form.text_field :officeSupplies %>
+  <div class="form-group">
+    <%= form.label 'Gastos com material de expediente' %>
+    <%= form.text_field :officeSupplies, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :rental %>
-    <%= form.text_field :rental %>
+  <div class="form-group">
+    <%= form.label 'Gastos com aluguel' %>
+    <%= form.text_field :rental, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :maintenance %>
-    <%= form.text_field :maintenance %>
+  <div class="form-group">
+    <%= form.label 'Gastos com manutenções' %>
+    <%= form.text_field :maintenance, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :taxes %>
-    <%= form.text_field :taxes %>
+  <div class="form-group">
+    <%= form.label 'Taxas' %>
+    <%= form.text_field :taxes, :class => 'form-control dinheiro' %>
   </div>
 
-  <div class="field">
-    <%= form.label :other %>
-    <%= form.text_field :other %>
+  <div class="form-group">
+    <%= form.label 'Outros gastos' %>
+    <%= form.text_field :other, :class => 'form-control dinheiro' %>
   </div>
+
+  <input type="hidden" value="<%= current_user.id %>" name="fixed_cost[user_id]" id="fixed_cost_user_id">
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar', :class => 'btn btn-success btn-block' %>
   </div>
 <% end %>
+
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+<script>
+    $('.dinheiro').mask('#.##0,00', {reverse: true});
+</script>
