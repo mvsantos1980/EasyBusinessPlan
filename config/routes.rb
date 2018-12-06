@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 
   #Modulos do sistema
-  resources :options
+
+  resources :fixed_costs
+  resources :products
 
   resources :human_resources do
     collection do
@@ -116,9 +118,13 @@ Rails.application.routes.draw do
 
   # base operacional do sistema
   resources :answers
+  # Só admin acessa {
   resources :groups
   resources :questions
   resources :homepages
+  resources :payments
+  resources :options
+  # }
 
   #DEVISE
   devise_for :users

@@ -4,6 +4,8 @@ Question.destroy_all
 
 Option.destroy_all
 
+Payment.destroy_all
+
 Group.create(
     descripition: 'Contextualização',
     )
@@ -334,4 +336,40 @@ Question.create(
 Question.create(
     descripition: 'Existe alguma estratégia para manter a competitividade das pessoas com foco na competitividade do negócio?',
     group_id: 10
+)
+
+Payment.create(
+    descrition: 'À vista',
+    installment: 1,
+    firstPayNow: TRUE
+)
+Payment.create(
+    descrition: '30 dias direto',
+    installment: 1,
+    firstPayNow: FALSE
+)
+Payment.create(
+    descrition: '1 + 30 dias',
+    installment: 2,
+    firstPayNow: TRUE
+)
+Payment.create(
+    descrition: '1 + 30 + 60 dias',
+    installment: 3,
+    firstPayNow: TRUE
+)
+Payment.create(
+    descrition: '1 + 30 + 60 + 90 dias',
+    installment: 4,
+    firstPayNow: TRUE
+)
+Payment.create(
+    descrition: '30 + 60 dias',
+    installment: 2,
+    firstPayNow: FALSE
+)
+Payment.create(
+    descrition: '30 + 60 + 90 dias',
+    installment: 3,
+    firstPayNow: FALSE
 )
